@@ -5,8 +5,9 @@
  * @param {number} f temperature in °F
  * @returns {number} temperature in °C
  */
-function convertToCelsius(f) {
-    // TODO
+function convertToCelsius(Fahrenheit) {
+  let celsius = (Fahrenheit - 32) *5 /9
+  return Math.round(celsius * 100) /100
   }
   
   /**
@@ -22,17 +23,44 @@ function convertToCelsius(f) {
    * @returns {string} the description from the table above corresponding to
    * the given Fahrenheit temperature `f`
    */
-  function describeTemperature(f) {
-    // TODO
-  }
-  
+  function describeTemperature(fahrenheit, celsius) {
+    let feeling;
+    
+    // Determine how the temperature feels
+    if (celsius <= 0) {
+        feeling = "It's freezing!";
+    } else if (celsius <= 10) {
+        feeling = "It's cold.";
+    } else if (celsius <= 20) {
+        feeling = "It's cool.";
+    } else if (celsius <= 30) {
+        feeling = "It's warm.";
+    } else {
+        feeling = "It's hot!";
+    }
+    
+    // Return the message
+    return `${fahrenheit}°F is ${celsius}°C. ${feeling}`;
+}
   /**
    * @param {number} limit
    * @returns {number} a random integer in the range [0, `limit`)
    */
-  function getRandomInt(limit) {
-    // TODO
-  }
+  // Function to generate a random number between 0 and the given limit
+function createMessage(limit) {
+  return Math.floor(Math.random() * (limit + 1));
+}
+
+// Example usage:
+// Generate a random Fahrenheit temperature between 0 and 100
+let fahrenheit = createMessage(100);
+// Convert the Fahrenheit temperature to Celsius
+let celsius = convertToCelsius(fahrenheit);
+// Create a message based on the temperature
+let message = createMessage(fahrenheit, celsius);
+
+// Print the message to the console
+console.log(message);
   
   // -------------------- DO NOT CHANGE THE CODE BELOW ---------------------- //
   /**
